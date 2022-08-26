@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-16"?>
+<RhinoScriptCompilerProject>
+  <Plugin>
+    <PluginName>BELT</PluginName>
+    <Description>BELT</Description>
+    <OutputPath>bin\</OutputPath>
+    <AuthorName>Nathan Barnes</AuthorName>
+    <AuthorEmail />
+    <AuthorPhone />
+    <AuthorAddress />
+    <AuthorCountry />
+    <AuthorWebsite />
+    <URL />
+    <CopyrightMessage>aaarrrrrgggghhhhh</CopyrightMessage>
+    <SemanticVersion>0.1.2</SemanticVersion>
+    <MinimumRhinoVersion>7.0</MinimumRhinoVersion>
+  </Plugin>
+  <Commands>
+    <!--Compiled Script: BELT-->
+    <Command>
+      <Name>BELT</Name>
+      <Path>BELT.py</Path>
+      <Type>Normal</Type>
+    </Command>
+  </Commands>
+</RhinoScriptCompilerProject>

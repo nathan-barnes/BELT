@@ -10,15 +10,18 @@ Rhino python toolbox using an ETO form that wraps custom dimension tools. Curren
 note: any python you run needs to be executable as a python script (don't choose to make a command).
 
 1) run "script compiler" from under tools
+
  ![Alt Text](https://github.com/nathan-barnes/BELT/blob/main/Documentation/ScriptCompiler-01.png)
 
 2) Follow the prompts on compiler to setup project details
+
  ![Alt Text](https://github.com/nathan-barnes/BELT/blob/main/Documentation/ScriptCompiler-02.png)
 
 
 Note: currently only aware of adding one python file with all your code in it. 
 
 3) once you run through the steps and build you will get two files
+
  ![Alt Text](https://github.com/nathan-barnes/BELT/blob/main/Documentation/ScriptCompiler-03.png)
  
  The RHP file you can drag into a rhino to install. 

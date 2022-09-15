@@ -63,7 +63,7 @@ def ClosestPt2Objects():
     rc,crvs,pts=Rhino.Geometry.Intersect.Intersection.BrepBrep(obj_A,obj_B,tol)
     if rc:
         if len(crvs)!=0 or len(pts)!=0:
-            print "Objects intersect!" ; return
+            print ("Objects intersect!" ); return
     #timer
     st=time.time()
     
@@ -116,7 +116,7 @@ def ClosestPt2Objects():
     msg+="  |  {} refinement iterations".format(final_pts[2])
     msg+="  |  Calc time: {:.2f} seconds".format(time.time()-st)
     
-    print msg
+    print (msg)
     
     Rhino.RhinoApp.RunScript("-_DimCurveLength -_SelID {} Style=Zahner_Regular _ZoomSelected ".format(display_line), False)
     
@@ -137,10 +137,22 @@ def ClosestPtCrvFunc():
     
     rs.CurrentLayer(currentLayer)
 
+def surfPlaneDim():
+    #layer setup
+    currentLayer = rs.CurrentLayer()
+    rs.CurrentLayer('DRAFTING::DIM')
+    
+    Rhino.RhinoApp.RunScript("!_SelNone", False)
+    Rhino.RhinoApp.RunScript("'_CPlane _Surface _Pause _Pause _Pause ", True)
+    Rhino.RhinoApp.RunScript("_-Dim AnnotationStyle Zahner_Regular _Pause _Pause _Pause ", True)
+    Rhino.RhinoApp.RunScript("_CPlane _World _Top ", False)
+    
+    rs.CurrentLayer(currentLayer)
+
 #-----------------setup menu items----------------------
 
-CheckBoxLabel = ['Brep to Brep', 'Brep/Crv To Crv']
-dimToolFunctionList = [ClosestPt2Objects, ClosestPtCrvFunc]
+CheckBoxLabel = ['Brep to Brep', 'Brep/Crv To Crv', 'Surface plane Dim']
+dimToolFunctionList = [ClosestPt2Objects, ClosestPtCrvFunc, surfPlaneDim]
 
 
 class SetupMenu():
@@ -208,9 +220,11 @@ class RunForm(forms.Dialog[bool]):
         
         global CheckBox1
         CheckBox1=SetupMenu()
+        global CheckBox2
+        CheckBox2=SetupMenu()
         #        layout.AddRow(None, CheckBox1.CreateCheckBox(CheckBoxLabel[1],False ))#CheckBoxStates[0]))
         
-        layout.AddRow(CheckBox0.CreateCheckBox(CheckBoxLabel[0],False ), CheckBox1.CreateCheckBox(CheckBoxLabel[1],False ))#CheckBoxStates[0]))
+        layout.AddRow(CheckBox0.CreateCheckBox(CheckBoxLabel[0],False ), CheckBox1.CreateCheckBox(CheckBoxLabel[1],False ), CheckBox2.CreateCheckBox(CheckBoxLabel[2],False ))#CheckBoxStates[0]))
         
         
         # ------------------------------------Create controls for the dialog
@@ -254,6 +268,7 @@ class RunForm(forms.Dialog[bool]):
     #        self.txoutput[1] = self.m_textbox1.Text
         self.cboutput[0] = CheckBox0.checkbox.Checked
         self.cboutput[1] = CheckBox1.checkbox.Checked
+        self.cboutput[2] = CheckBox2.checkbox.Checked
     #        self.cboutput[2] = CheckBox2.checkbox.Checked
     #        self.cboutput[3] = CheckBox3.checkbox.Checked
         

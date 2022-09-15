@@ -11,8 +11,8 @@
     <AuthorCountry />
     <AuthorWebsite />
     <URL />
-    <CopyrightMessage>aaarrrrrgggghhhhh</CopyrightMessage>
-    <SemanticVersion>0.1.2</SemanticVersion>
+    <CopyrightMessage>dun... dun.. DUNNNNN!</CopyrightMessage>
+    <SemanticVersion>0.1.5</SemanticVersion>
     <MinimumRhinoVersion>7.0</MinimumRhinoVersion>
   </Plugin>
   <Commands>

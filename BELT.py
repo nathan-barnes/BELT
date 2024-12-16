@@ -149,10 +149,21 @@ def surfPlaneDim():
     
     rs.CurrentLayer(currentLayer)
 
+
+def leaderMaterial():
+    #layer setup
+    currentLayer = rs.CurrentLayer()
+    rs.CurrentLayer('DRAFTING::NOTES')
+    
+    Rhino.RhinoApp.RunScript(r"!_-GrasshopperPlayer C:\Box\Engineering\parametric{COLAB}\_Tools\200_SubmittalTools\LEADER_WITH_SHAPE_SCRIPT092922.gh ", True)
+
+    
+    rs.CurrentLayer(currentLayer)
+
 #-----------------setup menu items----------------------
 
-CheckBoxLabel = ['Brep to Brep', 'Brep/Crv To Crv', 'Surface plane Dim']
-dimToolFunctionList = [ClosestPt2Objects, ClosestPtCrvFunc, surfPlaneDim]
+CheckBoxLabel = ['Brep to Brep', 'Brep/Crv To Crv', 'Surface plane Dim', 'leaderMaterial']
+dimToolFunctionList = [ClosestPt2Objects, ClosestPtCrvFunc, surfPlaneDim, leaderMaterial]
 
 
 class SetupMenu():
@@ -222,9 +233,12 @@ class RunForm(forms.Dialog[bool]):
         CheckBox1=SetupMenu()
         global CheckBox2
         CheckBox2=SetupMenu()
+        global CheckBox3
+        CheckBox3=SetupMenu()
         #        layout.AddRow(None, CheckBox1.CreateCheckBox(CheckBoxLabel[1],False ))#CheckBoxStates[0]))
         
-        layout.AddRow(CheckBox0.CreateCheckBox(CheckBoxLabel[0],False ), CheckBox1.CreateCheckBox(CheckBoxLabel[1],False ), CheckBox2.CreateCheckBox(CheckBoxLabel[2],False ))#CheckBoxStates[0]))
+        layout.AddRow(CheckBox0.CreateCheckBox(CheckBoxLabel[0],False ), CheckBox1.CreateCheckBox(CheckBoxLabel[1],False ), CheckBox2.CreateCheckBox(CheckBoxLabel[2],False )
+        , CheckBox3.CreateCheckBox(CheckBoxLabel[3],False ))#CheckBoxStates[0]))
         
         
         # ------------------------------------Create controls for the dialog
@@ -269,6 +283,7 @@ class RunForm(forms.Dialog[bool]):
         self.cboutput[0] = CheckBox0.checkbox.Checked
         self.cboutput[1] = CheckBox1.checkbox.Checked
         self.cboutput[2] = CheckBox2.checkbox.Checked
+        self.cboutput[3] = CheckBox3.checkbox.Checked
     #        self.cboutput[2] = CheckBox2.checkbox.Checked
     #        self.cboutput[3] = CheckBox3.checkbox.Checked
         

@@ -4,7 +4,7 @@
     <PluginName>BELT</PluginName>
     <Description>BELT</Description>
     <OutputPath>bin\</OutputPath>
-    <AuthorName>Nathan Barnes</AuthorName>
+    <AuthorName>Nathan Barnes, Chris Heichel</AuthorName>
     <AuthorEmail />
     <AuthorPhone />
     <AuthorAddress />
@@ -12,7 +12,7 @@
     <AuthorWebsite />
     <URL />
     <CopyrightMessage>dun... dun.. DUNNNNN!</CopyrightMessage>
-    <SemanticVersion>0.1.5</SemanticVersion>
+    <SemanticVersion>0.1.12</SemanticVersion>
     <MinimumRhinoVersion>7.0</MinimumRhinoVersion>
   </Plugin>
   <Commands>
@@ -20,6 +20,12 @@
     <Command>
       <Name>BELT</Name>
       <Path>BELT.py</Path>
+      <Type>Normal</Type>
+    </Command>
+    <!--Compiled Script: leader1-->
+    <Command>
+      <Name>leader1</Name>
+      <Path>Leader.py</Path>
       <Type>Normal</Type>
     </Command>
   </Commands>
